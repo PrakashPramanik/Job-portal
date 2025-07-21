@@ -1,0 +1,10 @@
+.sidebar-fixed {
+  border-right: 1px solid #dee2e6;
+  background-color: #ffffff;
+}
+
+.job-card:hover {
+  transform: scale(1.02);
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
