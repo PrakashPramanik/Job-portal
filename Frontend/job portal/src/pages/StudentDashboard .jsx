@@ -60,7 +60,7 @@ const handleApply = (jobId) => {
                     <strong>Company:</strong> {job.companyName || 'N/A'} <br />
                     <strong>Location:</strong> {job.location || 'N/A'} <br />
                     <strong>Type:</strong> {job.type || 'N/A'} <br />
-                    <strong>Salary:</strong> ₹{job.salaryRange} LPA <br />
+                    <strong>Salary:</strong> ₹{job.salaryRange} <br />
                     <strong>Description:</strong> <span className="text-muted">{job.description?.slice(0, 100) || 'N/A'}...</span>
                   </Card.Text>
 

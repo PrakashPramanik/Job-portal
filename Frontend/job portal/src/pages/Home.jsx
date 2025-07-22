@@ -13,7 +13,8 @@ const JobPage = () => {
   const [filters, setFilters] = useState({
     location: [],
     type: [],
-    salary: []
+    salary: [],
+    title: []
   });
 
   const [selectedJob, setSelectedJob] = useState(null);
@@ -58,6 +59,9 @@ const JobPage = () => {
     setSearch(e.target.value);
   };
 
+ 
+
+
   const applyFilters = () => {
     let result = [...jobs];
 
@@ -77,6 +81,10 @@ const JobPage = () => {
         });
       });
     }
+
+    if (filters.title.length)
+      result = result.filter((job) => filters.title.includes(job.title));
+
 
     if (search)
       result = result.filter((job) =>
@@ -115,7 +123,7 @@ const JobPage = () => {
         {/* Carousel */}
         <div className="carousel-text bg-success text-white text-center py-3">
           <marquee scrollamount="10">
-            Find your dream job at top companies • Apply easily • Filter by Location, Salary & Type!
+            Find your dream job at top companies • Apply easily • Filter by Location, Salary, Type & Category!
           </marquee>
         </div>
 
@@ -168,10 +176,26 @@ const JobPage = () => {
               onChange={() => handleCheckboxChange('salary', '>5')}
             />
 
+            <hr />
+            <h6>🏷️ Category (Title)</h6>
+            {[...new Set(jobs.map((job) => job.title))].map((title, idx) => (
+              <Form.Check
+                key={idx}
+                type="checkbox"
+                label={title}
+                onChange={() => handleCheckboxChange('title', title)}
+              />
+            ))}
+
+
             <Button variant="primary" className="mt-3 w-100" onClick={applyFilters}>
               ✅ Apply Filters
             </Button>
+           
           </Col>
+
+
+
 
           {/* Job Listings */}
           <Col md={9} className="p-4">
@@ -187,14 +211,14 @@ const JobPage = () => {
                           <strong>Company:</strong> {job.companyName || 'N/A'} <br />
                           <strong>Location:</strong> {job.location || 'N/A'} <br />
                           <strong>Type:</strong> {job.type || 'N/A'} <br />
-                          <strong>Salary:</strong> ₹{job.salaryRange} LPA <br />
+                          <strong>Salary:</strong> ₹{job.salaryRange} <br />
                           <strong>Description:</strong>{' '}
                           <span className="text-muted">
                             {job.description?.slice(0, 100) || 'N/A'}...
                           </span> <br />
                           <strong>Posted on:</strong> {new Date(job.createdAt).toLocaleString()} <br />
                           <strong>Posted By:</strong> {job.createdBy?.fullName} <br />
-                          
+
                         </Card.Text>
                         <div className="d-flex gap-2">
                           <Button variant="success" className="w-100" onClick={() => handleApply(job._id)}>
@@ -228,7 +252,7 @@ const JobPage = () => {
             <p><strong>Company:</strong> {selectedJob.companyName}</p>
             <p><strong>Location:</strong> {selectedJob.location}</p>
             <p><strong>Type:</strong> {selectedJob.type}</p>
-            <p><strong>Salary:</strong> ₹{selectedJob.salaryRange} LPA</p>
+            <p><strong>Salary:</strong> ₹{selectedJob.salaryRange} </p>
             <p><strong>Description:</strong> {selectedJob.description}</p>
             <p><strong>Posted on:</strong> {new Date(selectedJob.createdAt).toLocaleString()}</p>
             <p><strong>Posted By:</strong> {selectedJob.createdBy?.fullName}</p>
