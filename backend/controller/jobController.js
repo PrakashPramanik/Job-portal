@@ -37,17 +37,17 @@ export const createJob = async (req, res) => {
 
 
 
-// backend/controller/jobController.js
+
 export const getAllJobs = async (req, res) => {
   try {
     const { recruiterId } = req.query;
     let jobs;
 
     if (recruiterId) {
-      // Only jobs created by that recruiter
+   
       jobs = await Job.find({ createdBy: recruiterId }).populate('createdBy', 'fullName');
     } else {
-      // All jobs (e.g., for students)
+      
       jobs = await Job.find().populate('createdBy', 'fullName');
     }
 
@@ -62,21 +62,7 @@ export const getAllJobs = async (req, res) => {
 
 
 
-// export const getAllJobs = async (req, res) => {
-//   try {
-//     const jobs = await Job.find().populate("createdBy", "fullName email");
-//     // console.log("Job ID param:", req.params.id);
 
-
-
-//     // console.log(jobs)
-//     res.json(jobs);
-//   } catch (error) {
-//     res.status(500).json({ error: "Error fetching jobs" });
-//   }
-// };
-
-// controllers/jobController.js
 export const updateJobById = async (req, res) => {
   try {
     const jobId = req.params.id;
@@ -101,7 +87,7 @@ export const updateJobById = async (req, res) => {
 
 
 
-// import Job from "../models/Job.js";
+
 
 export const deleteJobById = async (req, res) => {
   try {
@@ -112,7 +98,7 @@ export const deleteJobById = async (req, res) => {
       return res.status(404).json({ message: "Job not found" });
     }
 
-    await job.deleteOne(); // or: await Job.findByIdAndDelete(jobId);
+    await job.deleteOne(); 
     res.status(200).json({ message: "Job deleted successfully" });
 
   } catch (error) {

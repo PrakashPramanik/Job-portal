@@ -49,6 +49,23 @@ const MyNavbar = () => {
             {user ? (
               <>
                 <span className="text-white me-2">Welcome, {user.fullName}</span>
+                <span className="text-white mx-2" style={{ borderLeft: '1px solid white', height: '24px' }}></span>
+
+
+                <Nav.Link
+                  className="text-white"
+                  onClick={() => {
+                    if (user?.role === 'student') {
+                      navigate('/studentDashboard');
+                    } else if (user?.role === 'recruiter') {
+                      navigate('/recruiterDashboard');
+                    }
+                  }}
+                >
+                  Dashboard
+                </Nav.Link>
+
+
                 <Dropdown align="end">
                   <Dropdown.Toggle
                     variant="link"
@@ -73,13 +90,13 @@ const MyNavbar = () => {
 
                     {user.role === 'recruiter' && (
                       <>
-                       
+
                         <Dropdown.Item onClick={() => navigate('/post-job')}>Post Job</Dropdown.Item>
                         <Dropdown.Divider />
                       </>
                     )}
 
- 
+
 
                     <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
                   </Dropdown.Menu>

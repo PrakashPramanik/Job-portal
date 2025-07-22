@@ -30,11 +30,11 @@ const userSchema = new mongoose.Schema(
             default: "",
         },
         resume: {
-            type: String, // Cloudinary URL of uploaded resume
+            type: String, 
             default: ""
         },
         resumeOriginalName: {
-            type: String, // Original filename
+            type: String, 
             default: ""
         }
         

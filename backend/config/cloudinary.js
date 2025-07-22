@@ -29,14 +29,14 @@ const storage = new CloudinaryStorage({
       resource_type = 'image';
     } else if (file.fieldname === 'resume') {
       folder = 'user_resumes';
-      resource_type = 'raw'; // Cloudinary requires raw for PDFs, DOCs, etc.
+      resource_type = 'raw'; 
     }
 
     return {
       folder,
       resource_type, 
-      public_id: `${Date.now()}-${file.originalname}`, // optional custom name
-      allowed_formats: ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'], // allowed file types
+      public_id: `${Date.now()}-${file.originalname}`, 
+      allowed_formats: ['jpg', 'jpeg', 'png', 'pdf', 'doc', 'docx'], 
     };
   },
 });

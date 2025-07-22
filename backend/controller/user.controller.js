@@ -124,10 +124,10 @@ export const logout=(req,res)=>{
 
 
 
-// import { cloudinary } from "../config/cloudinary.js";
+
 
 import { cloudinary } from '../config/cloudinary.js';
-// import { User } from '../models/user.model.js';
+
 
 export const updateProfile = async (req, res) => {
   try {

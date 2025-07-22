@@ -1,4 +1,4 @@
-// src/pages/StudentDashboard.jsx
+
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import MyNavbar from '../components/Navbar';
